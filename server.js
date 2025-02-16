@@ -6,7 +6,11 @@ const port = 8000;
 
 app.get("/ip", async (req, res) => {
   try {
-    const ipInfo = await getNuip.getNuip(req, { devMode: false });
+    const ipInfo = await getNuip.getNuip(req, {
+      devMode: false,
+      includeDetails: true,
+    });
+    console.log(ipInfo);
     res.json(ipInfo);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch IP info" });
